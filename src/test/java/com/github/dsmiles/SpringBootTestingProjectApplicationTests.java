@@ -1,4 +1,4 @@
-package com.github.dsmiles.springboottestingproject;
+package com.github.dsmiles;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
