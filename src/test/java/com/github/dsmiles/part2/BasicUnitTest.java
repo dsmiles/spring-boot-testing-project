@@ -1,5 +1,6 @@
 package com.github.dsmiles.part2;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -9,7 +10,8 @@ import org.junit.jupiter.api.Test;
 public class BasicUnitTest {
 
     @Test
+    @DisplayName("Integration test run by Surefire plugin")
     void test() {
-        System.out.println("running a unit test with the Maven Surefire Plugin");
+        System.out.println("Running a unit test with the Maven Surefire Plugin");
     }
 }

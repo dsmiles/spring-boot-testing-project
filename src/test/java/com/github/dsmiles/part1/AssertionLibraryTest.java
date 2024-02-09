@@ -3,6 +3,7 @@ package com.github.dsmiles.part1;
 import com.github.dsmiles.models.HelloWorld;
 import com.jayway.jsonpath.JsonPath;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.skyscreamer.jsonassert.JSONAssert;
@@ -16,15 +17,17 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalToIgnoringCase;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-
+@DisplayName("Demonstrate different assertion libraries")
 public class AssertionLibraryTest {
 
     @Test
+    @DisplayName("JUnit 5 Assertion")
     void helloWorldJUnit5() {
         assertEquals("hello world!", "HELLO WORLD!".toLowerCase());
     }
 
     @Test
+    @DisplayName("Mockito Assertion")
     void helloWorldMockito() {
         HelloWorld mockedHello = Mockito.mock(HelloWorld.class);
 
@@ -35,17 +38,20 @@ public class AssertionLibraryTest {
     }
 
     @Test
+    @DisplayName("AssertJ Assertion")
     void helloWorldAssertJ() {
         Assertions.assertThat("hello world!")
             .isEqualToIgnoringCase("HELLO WORLD!");
     }
 
     @Test
+    @DisplayName("Hamcrest Assertion")
     void helloWorldHamcrest() {
         assertThat("hello world!", equalToIgnoringCase("HELLO WORLD!"));
     }
 
     @Test
+    @DisplayName("JsonAssert Assertion")
     void helloWorldJsonAssert() throws Exception {
         String result = "{name: 'fred', age: 42}";
 
@@ -57,6 +63,7 @@ public class AssertionLibraryTest {
     }
 
     @Test
+    @DisplayName("JsonPath Assertion")
     void helloWorldJsonPath() {
         String result = "{\"age\":\"42\", \"name\": \"fred\", \"tags\":[\"java\", \"jdk\"]}";
 
@@ -66,6 +73,7 @@ public class AssertionLibraryTest {
     }
 
     @Test
+    @DisplayName("XmlUnit Assertion")
     void helloWorldXmlUnit() {
         Source expected = Input.fromString("<invoices></invoices>").build();
         Source actual = Input.fromString("<customers></customers>").build();
