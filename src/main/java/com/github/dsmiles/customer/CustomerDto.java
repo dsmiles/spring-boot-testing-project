@@ -1,4 +1,4 @@
-package com.github.dsmiles.Customer;
+package com.github.dsmiles.customer;
 
 import java.time.ZonedDateTime;
 
