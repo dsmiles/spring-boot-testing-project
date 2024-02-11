@@ -1,9 +1,12 @@
 package com.github.dsmiles.Customer;
 
+import com.github.dsmiles.WebSecurityConfig;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.context.annotation.Import;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.time.ZoneId;
@@ -16,6 +19,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
+// Must manually import the security config when using a SecurityFilterChain bean
+@Import(WebSecurityConfig.class)
 @WebMvcTest(CustomerController.class)
 public class CustomerControllerTest {
 
@@ -26,19 +31,21 @@ public class CustomerControllerTest {
     private MockMvc mockMvc;
 
     @Test
+    @DisplayName("Check MockMvc has been injected")
     void shouldCreateMockMvc() {
         assertNotNull(mockMvc);
     }
 
     @Test
+    @DisplayName("Check 200 status OK returned on GET")
     void shouldGet200() throws Exception {
-        this
-            .mockMvc
-            .perform(get("/api/customers"))
+        mockMvc
+            .perform(get("/api/customers"))     // Look at WebSecurityConfig
             .andExpect(status().isOk());
     }
 
     @Test
+    @DisplayName("Check a list of customers returned")
     void shouldReturnListOfCustomers() throws Exception {
         ZoneId zoneId = ZoneId.of("Europe/London");
         ZonedDateTime zdt = ZonedDateTime.of(2024, 2, 10, 16, 35, 0, 0, zoneId);
@@ -46,9 +53,9 @@ public class CustomerControllerTest {
 
         when(customerService.getAllCustomers()).thenReturn(List.of(customer));
 
-        this
-            .mockMvc
-            .perform(get("/api/customers"))
+        mockMvc
+            .perform(get("/api/customers"))     // Look at WebSecurityConfig
+            .andExpect(status().isOk())
             .andExpect(jsonPath("$.size()").value(1))
             .andExpect(jsonPath("$[0].id").value(42))
             .andExpect(jsonPath("$[0].name").value("fred"))
@@ -56,6 +63,7 @@ public class CustomerControllerTest {
     }
 
     @Test
+    @DisplayName("Check list of customers returned")
     void shouldReturnListOfCustomersAlternate() throws Exception {
         ZoneId zoneId = ZoneId.of("Europe/London");
         ZonedDateTime zdt = ZonedDateTime.of(2024, 2, 10, 16, 35, 0, 0, zoneId);
@@ -67,9 +75,9 @@ public class CustomerControllerTest {
 
         when(customerService.getAllCustomers()).thenReturn(List.of(customer));
 
-        this
-            .mockMvc
-            .perform(get("/api/customers"))
+        mockMvc
+            .perform(get("/api/customers"))     // Look at WebSecurityConfig
+            .andExpect(status().isOk())
             .andExpect(jsonPath("$.size()").value(1))
             .andExpect(jsonPath("$[0].id").value(42))
             .andExpect(jsonPath("$[0].name").value("fred"))
