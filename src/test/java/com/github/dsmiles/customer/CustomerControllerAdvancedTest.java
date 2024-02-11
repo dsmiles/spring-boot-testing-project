@@ -1,4 +1,4 @@
-package com.github.dsmiles.Customer;
+package com.github.dsmiles.customer;
 
 import com.github.dsmiles.WebSecurityConfig;
 import org.junit.jupiter.api.DisplayName;
