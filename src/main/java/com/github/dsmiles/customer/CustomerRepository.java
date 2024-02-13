@@ -19,4 +19,6 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
             "ORDER BY joined_at ASC " +
             "LIMIT 1", nativeQuery = true)
     Customer getEarlyBird();
+
+    Customer findByName(String name);
 }
