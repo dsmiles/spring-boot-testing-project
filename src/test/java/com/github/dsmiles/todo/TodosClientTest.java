@@ -53,8 +53,6 @@ class TodosClientTest {
             .expect(requestTo("/todos"))
             .andRespond(withServerError());
 
-        assertThrows(RuntimeException.class, () -> {
-            todosClient.fetchAllTodos();
-        });
+        assertThrows(RuntimeException.class, todosClient::fetchAllTodos);
     }
 }
