@@ -5,6 +5,9 @@ import java.time.ZonedDateTime;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import lombok.*;
+
+@Getter
 public class CustomerDto {
 
     @JsonProperty("customerName")
@@ -17,13 +20,5 @@ public class CustomerDto {
     public CustomerDto(Customer customer) {
         this.name = customer.getName();
         this.joinedAt = customer.getJoinedAt();
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public ZonedDateTime getJoinedAt() {
-        return joinedAt;
     }
 }
