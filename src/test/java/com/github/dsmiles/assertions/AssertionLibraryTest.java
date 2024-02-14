@@ -1,4 +1,4 @@
-package com.github.dsmiles.part1;
+package com.github.dsmiles.assertions;
 
 import com.github.dsmiles.models.HelloWorld;
 import com.jayway.jsonpath.JsonPath;

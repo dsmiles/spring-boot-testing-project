@@ -1,4 +1,4 @@
-package com.github.dsmiles.part2;
+package com.github.dsmiles.plugins;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
