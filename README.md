@@ -1,14 +1,20 @@
 # Spring Boot Testing Project
 
-This repository is a work in progress.
+This repository is a work in progress. I will be updating it over the next week or two (Feb 14, 2024)
 
 It demonstrates the basics of writing unit, integration, and end-to-end tests for a Spring Boot application.
 
-I will build out the README as I complete each section.
+Although I've been testing Spring Boot Applications directly and indirectly for many years, I still like to study the
+subject and improve my skills. As such, I studied a course provided by Philip Riecks, [Testing Spring Boot Applications Primer](https://rieckpil.de/testing-spring-boot-applications-primer/).  
 
-This example project will cover the various levels of testing.
+The code in this project is my implementation of what I studied during the course. I've added and removed elements, as I
+saw fit, to better my understanding of the topics covered. As such, I've added a lot more comments than usual to aid as
+reminders to myself. I've also used additional components like Lombok to remove boilerplate code.
 
-A good visualization of how the test pyramid for Spring Boot projects can look can be seen in this diagram:
+## Spring Boot and the Test Pyramid
+
+This example project will cover the various levels of testing that takes place in a Spring Boot project.  A good 
+visualization of how the test pyramid for Spring Boot projects can look can be seen in this diagram:
 
 ![Spring Test Pyramid](/assets/images/SpringTestPyramid.png)
 
