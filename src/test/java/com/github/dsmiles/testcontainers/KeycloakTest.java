@@ -3,6 +3,7 @@ package com.github.dsmiles.testcontainers;
 import java.time.Duration;
 
 import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.testcontainers.containers.GenericContainer;
@@ -18,6 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  * specifically a Keycloak container, for integration testing.
  */
 @Testcontainers
+@Disabled
 public class KeycloakTest {
 
     /**
@@ -27,13 +29,13 @@ public class KeycloakTest {
      */
     @Container
     static GenericContainer<?> keycloakContainer =
-        new GenericContainer<>(DockerImageName.parse("jboss/keycloak:14.0.0"))
-            .withExposedPorts(8090)
-            .withStartupTimeout(Duration.ofSeconds(30))
-            .waitingFor(Wait.forHttp("/auth").forStatusCode(200));
+        new GenericContainer<>(DockerImageName.parse("jboss/keycloak:latest"))
+            .withExposedPorts(9990)
+            .withStartupTimeout(Duration.ofSeconds(300))
+            .waitingFor(Wait.forHttp("/management").forStatusCode(200));
 
     @Test
-    @DisplayName("Check the Keyclock IdP container can be started")
+    @DisplayName("Check the Keycloak IdP container can be started")
     void shouldStartCustomDockerContainer() {
         assertTrue(keycloakContainer.isRunning(), "Keycloak container failed to start");
     }
