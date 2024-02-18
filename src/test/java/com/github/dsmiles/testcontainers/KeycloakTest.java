@@ -6,6 +6,8 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.springframework.test.context.DynamicPropertyRegistry;
+import org.springframework.test.context.DynamicPropertySource;
 import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.containers.wait.strategy.Wait;
 import org.testcontainers.junit.jupiter.Container;
@@ -19,7 +21,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  * specifically a Keycloak container, for integration testing.
  */
 @Testcontainers
-@Disabled
 public class KeycloakTest {
 
     /**
@@ -28,11 +29,18 @@ public class KeycloakTest {
      * for the Keycloak application to finish starting.
      */
     @Container
-    static GenericContainer<?> keycloakContainer =
-        new GenericContainer<>(DockerImageName.parse("jboss/keycloak:latest"))
-            .withExposedPorts(9990)
-            .withStartupTimeout(Duration.ofSeconds(300))
-            .waitingFor(Wait.forHttp("/management").forStatusCode(200));
+    private static final GenericContainer<?> keycloakContainer =
+        new GenericContainer<>(DockerImageName
+            .parse("quay.io/keycloak/keycloak:latest"))
+            .withExposedPorts(8080)
+            .withStartupTimeout(Duration.ofMinutes(5))
+            .withCommand("start-dev")
+            .waitingFor(Wait
+                .forHttp("/admin")
+                .forPort(8080)
+                .forStatusCode(200)
+                .withStartupTimeout(Duration.ofMinutes(5))
+            );
 
     @Test
     @DisplayName("Check the Keycloak IdP container can be started")

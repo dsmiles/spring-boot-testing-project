@@ -29,3 +29,12 @@ tests)
 There is no standard definition of what a unit or integration test is. We can find multiple definitions in many 
 different books and naming conventions vary from team to team.  Just pick a naming convention and be consistent!  
  
+## Additional components
+
+In addition to core testing concepts, this project briefly explores the following components:
+
+* **Selenide**: A concise and expressive framework for writing UI tests in Java.
+* **TestContainers**: A library that provides lightweight, throwaway instances of common databases, Selenium web browsers, or anything else that can run in a Docker container.
+* **Selenium Container**: A Docker container that runs the Selenium WebDriver.
+* **PostgreSQL Container**: A Docker container running the PostgreSQL database.
+* **Keycloak Identity and Access Management Container**: A Docker container running the Keycloak identity and access management platform.
