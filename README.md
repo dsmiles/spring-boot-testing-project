@@ -1,8 +1,6 @@
 # Spring Boot Testing Project
 
-This repository is a work in progress. I will be updating it over the next week or two (Feb 14, 2024)
-
-It demonstrates the basics of writing unit, integration, and end-to-end tests for a Spring Boot application.
+This repository demonstrates the basics of writing unit, integration, and end-to-end tests for a Spring Boot application.
 
 Although I've been testing Spring Boot Applications directly and indirectly for many years, I still like to study the
 subject and improve my skills. As such, I studied a course provided by Philip Riecks, [Testing Spring Boot Applications Primer](https://rieckpil.de/testing-spring-boot-applications-primer/).  
