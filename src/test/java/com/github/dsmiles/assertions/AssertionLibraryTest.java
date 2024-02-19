@@ -34,7 +34,11 @@ public class AssertionLibraryTest {
         // My HelloWorld class actually returns different text
         Mockito.when(mockedHello.getText()).thenReturn("Hello World!");
 
+        // Verify the mock replaced the returned text string
         assertEquals("Hello World!", mockedHello.getText());
+
+        // Verify that getText() has been called at least once
+        Mockito.verify(mockedHello).getText();
     }
 
     @Test
